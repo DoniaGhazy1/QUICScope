@@ -1,0 +1,2 @@
+timestamp_ns,record_type,requested_bytes,accepted_bytes,send_duration_ns,cumulative_accepted_bytes
+# monotonic_raw_start_ns=1483060982865, realtime_start_ns=1791487907265569321

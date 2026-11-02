@@ -1,0 +1,2 @@
+timestamp_ns,sample_duration_ns,tcpi_unacked,tcpi_sacked,tcpi_lost,tcpi_retrans,tcpi_snd_cwnd,tcpi_ca_state,tcpi_snd_mss,tcpi_rtt,tcpi_notsent_bytes,tcpi_pacing_rate,tcpi_delivery_rate
+# monotonic_raw_start_ns=649217308044, realtime_start_ns=1791487073421695574

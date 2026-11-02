@@ -1,0 +1,11 @@
+Connecting to host 192.168.88.21, port 5201
+[  5] local 192.168.88.20 port 55794 connected to 192.168.88.21 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  2.73 GBytes  23.4 Gbits/sec    0    658 KBytes       
+[  5]   1.00-2.00   sec  3.20 GBytes  27.4 Gbits/sec    0    658 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-2.00   sec  5.92 GBytes  25.4 Gbits/sec    0             sender
+[  5]   0.00-2.00   sec  5.92 GBytes  25.4 Gbits/sec                  receiver
+
+iperf Done.

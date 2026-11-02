@@ -1,0 +1,5 @@
+Semantic state distribution (derived from independent recomputation):
+READY: 137551
+FC_LIMITED: 22607
+CC_LIMITED: 5298
+APP_LIMITED: 300

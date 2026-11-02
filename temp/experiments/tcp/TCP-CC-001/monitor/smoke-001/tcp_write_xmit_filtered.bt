@@ -1,0 +1,39 @@
+BEGIN {
+    // CSV header – redirect the probe output to a .log or .txt file when invoking bpftrace,
+    // e.g. "sudo bpftrace -o bpf_events.log <script> -c \"sender_new 5\""
+    printf("timestamp_ns socket_ptr write_seq snd_nxt snd_una snd_wnd snd_cwnd packets_out sacked_out lost_out retrans_out ca_state\n");
+}
+
+kprobe:tcp_write_xmit
+{
+    $sk = (struct sock *)arg0;
+    // Apply address/port filter using the fields in __sk_common.
+    // NOTE: skc_rcv_saddr, skc_daddr and skc_dport are stored in *network byte order* (big‑endian).
+    // To compare them against host‑order literals we must either byte‑swap the value
+    // or use the little‑endian representation of the constants.
+    // The following constants are the *host‑order* (little‑endian) equivalents of the
+    // experimental connection values:
+    //   192.168.88.20  -> 0x1458A8C0
+    //   192.168.88.21  -> 0x1558A8C0
+    //   port 5204      -> 0x5414
+    if ($sk->__sk_common.skc_rcv_saddr == 0x1458A8C0 &&
+        $sk->__sk_common.skc_daddr    == 0x1558A8C0 &&
+        $sk->__sk_common.skc_dport    == 0x5414) {
+        $tp   = (struct tcp_sock *)$sk;
+        $icsk = (struct inet_connection_sock *)$sk;
+
+        printf("%lld %p %u %u %u %u %u %u %u %u %u %u\n",
+            nsecs,
+            $sk,
+            $tp->write_seq,
+            $tp->snd_nxt,
+            $tp->snd_una,
+            $tp->snd_wnd,
+            $tp->snd_cwnd,
+            $tp->packets_out,
+            $tp->sacked_out,
+            $tp->lost_out,
+            $tp->retrans_out,
+            $icsk->icsk_ca_state);
+    }
+}

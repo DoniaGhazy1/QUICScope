@@ -1,0 +1,5 @@
+nohup: ignoring input and appending output to 'nohup.out'
+tcpdump: listening on ens4, link-type EN10MB (Ethernet), snapshot length 128 bytes
+Got 0Got 1290Got 70204Got 146596Got 147125Got 147127Got 147129147129 packets captured
+147129 packets received by filter
+0 packets dropped by kernel

@@ -1,0 +1,16 @@
+UTC date/time: 2026-10-07 18:37:03 UTC
+Hostname: sriov-vm1
+Kernel: 6.8.0-146-generic
+ens4 IPv4: 192.168.88.20/24
+ens4 link state: up
+ens4 MTU: 1500
+Route to 192.168.88.21:
+192.168.88.21 dev ens4 src 192.168.88.20 uid 1000
+    cache
+TCP congestion control: cubic
+Sender parameters:
+  server = 192.168.88.21
+  port = 5202
+  chunk size = 65536
+  pause = 0.100
+  repetitions = 20

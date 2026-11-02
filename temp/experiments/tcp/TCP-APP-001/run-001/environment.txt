@@ -1,0 +1,13 @@
+Wed Oct  7 18:03:53 UTC 2026
+6.8.0-146-generic
+3: ens4    inet 192.168.88.20/24 scope global ens4\       valid_lft forever preferred_lft forever
+3: ens4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 12:40:d5:16:cb:13 brd ff:ff:ff:ff:ff:ff
+    altname enp0s4
+net.ipv4.tcp_congestion_control = cubic
+sender.py parameters:
+    server = 192.168.88.21
+    port = 5202
+    chunk size = 65536
+    pause = 0.100
+    repetitions = 20

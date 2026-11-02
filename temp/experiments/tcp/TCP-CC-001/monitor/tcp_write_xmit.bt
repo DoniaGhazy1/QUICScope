@@ -1,0 +1,19 @@
+kprobe:tcp_write_xmit
+{
+    $sk = (struct sock *)arg0;
+    $tp = (struct tcp_sock *)$sk;
+    $icsk = (struct inet_connection_sock *)$sk;
+    printf("%lld %p %u %u %u %u %u %u %u %u %u %u\n",
+        nsecs,
+        $sk,
+        $tp->write_seq,
+        $tp->snd_nxt,
+        $tp->snd_una,
+        $tp->snd_wnd,
+        $tp->snd_cwnd,
+        $tp->packets_out,
+        $tp->sacked_out,
+        $tp->lost_out,
+        $tp->retrans_out,
+        $icsk->icsk_ca_state);
+}

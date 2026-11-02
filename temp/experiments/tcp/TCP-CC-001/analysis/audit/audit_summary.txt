@@ -1,0 +1,3 @@
+Total BPF rows recorded in joint predicates: 165756
+Rows with missing raw BPF observation in event_centered.tsv: 0
+Predicate mismatches (independent recomputation vs stored): 0

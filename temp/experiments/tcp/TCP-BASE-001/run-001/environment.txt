@@ -1,0 +1,18 @@
+]633;E;echo "=== date/time ===";9e2f8c6f-0bd6-4b92-8069-47164636e98c]633;C=== date/time ===
+2026-10-07 16:03:46 UTC
+=== hostname ===
+sriov-vm1
+=== git commit (if any) ===
+none
+=== kernel ===
+Linux sriov-vm1 6.8.0-146-generic #146-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep  3 16:12:30 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+=== tcp congestion control ===
+net.ipv4.tcp_congestion_control = cubic
+=== ens4 IP ===
+192.168.88.20/24
+=== ens4 MTU ===
+1500
+=== iperf3 version ===
+iperf 3.16 (cJSON 1.7.15)
+=== tcpdump version ===
+tcpdump version 4.99.4

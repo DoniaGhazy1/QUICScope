@@ -1,0 +1,3 @@
+-rwxrwxr-x rosa/rosa     16768 2026-10-08 00:29 receiver
+-rw-rw-r-- rosa/rosa         0 2026-10-08 00:40 receiver.sha256
+-rw-rw-r-- rosa/rosa      2299 2026-10-08 00:40 README_vm2.txt

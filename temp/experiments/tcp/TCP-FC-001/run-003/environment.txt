@@ -1,0 +1,10 @@
+Wed Oct  7 21:15:35 UTC 2026
+sriov-vm1
+6.8.0-146-generic
+ens4             UP             192.168.88.20/24 fe80::1040:d5ff:fe16:cb13/64 
+192.168.88.21 dev ens4 src 192.168.88.20 uid 1000 
+    cache 
+cubic
+3: ens4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 12:40:d5:16:cb:13 brd ff:ff:ff:ff:ff:ff
+    altname enp0s4

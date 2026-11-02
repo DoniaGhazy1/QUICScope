@@ -1,0 +1,62 @@
+=== Pre‑flight Check Results (VM1) ===
+
+Hostname:
+sriov-vm1
+
+Interface ens4 (brief):
+ens4             UP             192.168.88.20/24 fe80::1040:d5ff:fe16:cb13/64
+
+Interface ens4 (detailed IPv4):
+3: ens4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    altname enp0s4
+    inet 192.168.88.20/24 scope global ens4
+       valid_lft forever preferred_lft forever
+
+Route to 192.168.88.21 (as seen from VM1):
+192.168.88.21 dev ens4 src 192.168.88.20 uid 1000
+    cache
+
+Sender binary:
+/home/rosa/experiments/tcp/TCP-CC-001/sender – exists and is executable
+
+Receiver binary:
+/home/rosa/experiments/tcp/TCP-CC-001/receiver – exists and is executable
+
+Port 5204 listening locally:
+None (port 5204 not in use)
+
+Disk space on /home/rosa:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        48G  3.6G   44G   8% /
+
+=== Build & System Information ===
+
+Kernel version:
+6.8.0-146-generic
+
+Current TCP congestion‑control algorithm:
+net.ipv4.tcp_congestion_control = cubic
+
+TCP receive buffer defaults (net.ipv4.tcp_rmem):
+net.ipv4.tcp_rmem = 4096	131072	6291456
+
+TCP send buffer defaults (net.ipv4.tcp_wmem):
+net.ipv4.tcp_wmem = 4096	16384	4194304
+
+SHA‑256 checksums of the compiled binaries:
+sender:   cb810331821a593dac28cb338f28ab461f5b4abdb2e07b8cf16e7815a21aea70
+receiver: b7c1e745eac17cb04eb3b2dd5dea2d0ab84750aa6bf42f410740e2cee2285633
+
+Running processes related to this experiment on VM1:
+no sender processes
+no receiver processes
+
+=== Smoke‑test Directory ===
+
+Directory created (if not already present):
+/home/rosa/experiments/tcp/TCP-CC-001/smoke-001/
+
+This directory contains this metadata file and will be used to store the
+sender logs (`sender_app_log.csv`, `sender_tcpinfo_log.csv`) when the test is run.
+
+--- End of metadata ---

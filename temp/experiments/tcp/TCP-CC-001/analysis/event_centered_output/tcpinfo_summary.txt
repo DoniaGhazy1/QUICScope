@@ -1,0 +1,6 @@
+TCP_INFO predicate counts
+pred_C=UNKNOWN: 2848
+pred_D=FALSE: 19
+pred_D=TRUE: 2829
+pred_F=UNKNOWN: 2848
+pred_R=UNKNOWN: 2848

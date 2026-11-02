@@ -1,0 +1,13 @@
+Overall predicate counts
+pred_C=FALSE: 5298
+pred_C=TRUE: 160458
+pred_C=UNKNOWN: 352838
+pred_D=FALSE: 319
+pred_D=TRUE: 168285
+pred_D=UNKNOWN: 349990
+pred_F=FALSE: 22607
+pred_F=TRUE: 143149
+pred_F=UNKNOWN: 352838
+pred_R=FALSE: 165606
+pred_R=TRUE: 150
+pred_R=UNKNOWN: 352838

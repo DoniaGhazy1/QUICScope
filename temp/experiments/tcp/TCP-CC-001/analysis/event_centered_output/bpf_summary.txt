@@ -1,0 +1,9 @@
+BPF predicate counts
+pred_C=FALSE: 5298
+pred_C=TRUE: 160458
+pred_D=FALSE: 300
+pred_D=TRUE: 165456
+pred_F=FALSE: 22607
+pred_F=TRUE: 143149
+pred_R=FALSE: 165606
+pred_R=TRUE: 150

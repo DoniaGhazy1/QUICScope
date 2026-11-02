@@ -1,0 +1,2 @@
+[INFO] Starting TCP-APP-001 sender
+[ERROR] Sender encountered an exception: [Errno 111] Connection refused

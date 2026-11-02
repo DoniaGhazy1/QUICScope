@@ -1,0 +1,1 @@
+reading from file /home/rosa/experiments/tcp/TCP-APP-001/run-004/tcp_capture.pcap, link-type EN10MB (Ethernet), snapshot length 256

@@ -1,0 +1,23 @@
+[INFO] Starting TCP-APP-001 sender
+[INFO] Connected to 192.168.88.21:5202
+[INFO] Sent chunk 1/20 (65536 bytes)
+[INFO] Sent chunk 2/20 (65536 bytes)
+[INFO] Sent chunk 3/20 (65536 bytes)
+[INFO] Sent chunk 4/20 (65536 bytes)
+[INFO] Sent chunk 5/20 (65536 bytes)
+[INFO] Sent chunk 6/20 (65536 bytes)
+[INFO] Sent chunk 7/20 (65536 bytes)
+[INFO] Sent chunk 8/20 (65536 bytes)
+[INFO] Sent chunk 9/20 (65536 bytes)
+[INFO] Sent chunk 10/20 (65536 bytes)
+[INFO] Sent chunk 11/20 (65536 bytes)
+[INFO] Sent chunk 12/20 (65536 bytes)
+[INFO] Sent chunk 13/20 (65536 bytes)
+[INFO] Sent chunk 14/20 (65536 bytes)
+[INFO] Sent chunk 15/20 (65536 bytes)
+[INFO] Sent chunk 16/20 (65536 bytes)
+[INFO] Sent chunk 17/20 (65536 bytes)
+[INFO] Sent chunk 18/20 (65536 bytes)
+[INFO] Sent chunk 19/20 (65536 bytes)
+[INFO] Sent chunk 20/20 (65536 bytes)
+[INFO] Connection closed cleanly

@@ -1,0 +1,19 @@
+Most frequent state transitions (sorted by count)
+READY -> FC_LIMITED: 5716
+FC_LIMITED -> READY: 5716
+READY -> CC_LIMITED: 888
+CC_LIMITED -> READY: 888
+READY -> APP_LIMITED: 265
+APP_LIMITED -> READY: 265
+
+Examples of requested transitions (if present):
+READY -> FC_LIMITED:
+  prev_ts=1892778079343 pred_D=TRUE pred_F=TRUE pred_C=TRUE pred_R=FALSE
+  next_ts=1892778086319 pred_D=TRUE pred_F=FALSE pred_C=TRUE pred_R=FALSE
+READY -> CC_LIMITED:
+  prev_ts=1892743587755 pred_D=TRUE pred_F=TRUE pred_C=TRUE pred_R=FALSE
+  next_ts=1892743594335 pred_D=TRUE pred_F=TRUE pred_C=FALSE pred_R=FALSE
+FC_LIMITED -> CC_LIMITED: NOT OBSERVED
+CC_LIMITED -> FC_LIMITED: NOT OBSERVED
+
+Transitions that skip intermediate states (e.g., READY -> MULTIPLE)

@@ -1,0 +1,15 @@
+]633;E;date -u;f9c9420e-43be-48c7-86ed-e63a44f253d2]633;CWed Oct  7 18:23:02 UTC 2026
+sriov-vm1
+6.8.0-146-generic
+3: ens4: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 12:40:d5:16:cb:13 brd ff:ff:ff:ff:ff:ff
+    altname enp0s4
+192.168.88.21 via 10.0.2.2 dev ens3 src 10.0.2.15 uid 1000 
+    cache 
+net.ipv4.tcp_congestion_control = cubic
+sender.py parameters:
+    server = 192.168.88.21
+    port = 5202
+    chunk size = 65536
+    pause = 0.100
+    repetitions = 20

@@ -1,0 +1,24 @@
+Per‑source predicate counts
+--- APP ---
+pred_C=UNKNOWN: 349990
+pred_D=UNKNOWN: 349990
+pred_F=UNKNOWN: 349990
+pred_R=UNKNOWN: 349990
+
+--- BPF ---
+pred_C=FALSE: 5298
+pred_C=TRUE: 160458
+pred_D=FALSE: 300
+pred_D=TRUE: 165456
+pred_F=FALSE: 22607
+pred_F=TRUE: 143149
+pred_R=FALSE: 165606
+pred_R=TRUE: 150
+
+--- TCP_INFO ---
+pred_C=UNKNOWN: 2848
+pred_D=FALSE: 19
+pred_D=TRUE: 2829
+pred_F=UNKNOWN: 2848
+pred_R=UNKNOWN: 2848
+

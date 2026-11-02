@@ -1,0 +1,11 @@
+UTC Timestamp: 2026-10-07T19:46:59Z
+Hostname: sriov-vm1
+Kernel Version: 6.8.0-146-generic
+Git Commit: N/A
+ens4 Operstate: up
+ens4 IPv4: 192.168.88.20/24
+Route to 192.168.88.21: dev ens4 src 192.168.88.20 uid 1000
+MTU (ens4): 1500
+TCP Congestion Control: cubic
+Python Version: Python 3.12.3
+tcpdump Version: tcpdump version 4.99.4

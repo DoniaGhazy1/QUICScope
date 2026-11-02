@@ -1,0 +1,6 @@
+Predicate provenance for event‑centered analysis:
+* D – direct from tcpi_notsent_bytes (TCP_INFO) or from write_seq‑snd_nxt (BPF).
+* F – derived from snd_wnd, snd_nxt, snd_una (BPF) using signed wrap‑aware logic.
+* C – derived from snd_cwnd and packet counters (BPF) – a proxy for cwnd headroom.
+* R – true only for ca_state values 3 (CA_RECOVERY) or 4 (CA_LOSS) (BPF).
+* APP events contain no transport state; all predicates are UNKNOWN for them.

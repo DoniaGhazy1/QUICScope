@@ -1,0 +1,5 @@
+Joint D/F/C predicate counts (BPF events)
+D=FALSE, F=TRUE, C=TRUE: 300
+D=TRUE, F=FALSE, C=TRUE: 22607
+D=TRUE, F=TRUE, C=FALSE: 5298
+D=TRUE, F=TRUE, C=TRUE: 137551
