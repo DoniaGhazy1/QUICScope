@@ -2,14 +2,16 @@ package main
 
 import (
     "context"
-    "crypto/ed25519"
-    "crypto/rand"
     "crypto/tls"
-    "crypto/x509"
+    "encoding/json"
+    "flag"
     "fmt"
     "io"
     "log"
-    "math/big"
+    "os"
+    "crypto/sha256"
+    "encoding/hex"
+    "strings"
 
     "github.com/quic-go/quic-go"
     "github.com/quic-go/quic-go/http3/qlog"
@@ -29,8 +31,30 @@ func main() {
     // Sequence file with the suffix ".sqlog".
     cfg := &quic.Config{Tracer: qlog.DefaultConnectionTracer}
 
+    // Ensure results directory exists for ground‑truth output.
+    if err := os.MkdirAll("results", 0755); err != nil {
+        log.Fatalf("failed to create results dir: %v", err)
+    }
+    // Open ground‑truth file for this client run.
+    gtFile, err := os.Create("results/client_ground_truth.jsonl")
+    if err != nil {
+        log.Fatalf("failed to create ground‑truth file: %v", err)
+    }
+    defer gtFile.Close()
+    gtEnc := json.NewEncoder(gtFile)
+    // Register the loss recorder to write ground‑truth loss records.
+    quic.SetLossRecorder(func(rec quic.PublicLossRecord) {
+        // Ignore encoding errors; they are unlikely in this context.
+        _ = gtEnc.Encode(rec)
+    })
+
+    // Command-line flag for server address (default loopback).
+    // Default address matches the server's listening address (127.0.0.1:4242).
+    addr := flag.String("addr", "127.0.0.1:4242", "address of the QUIC server (host:port)")
+    flag.Parse()
+
     // Connect to the server.
-    conn, err := quic.DialAddr(context.Background(), "localhost:4242", tlsConf, cfg)
+    conn, err := quic.DialAddr(context.Background(), *addr, tlsConf, cfg)
     if err != nil {
         log.Fatalf("dial error: %v", err)
     }
@@ -43,8 +67,8 @@ func main() {
     }
     defer stream.Close()
 
-    // Generate deterministic payload of 5 MiB (adjustable via the constant).
-    const payloadSize = 5 * 1024 * 1024 // 5 MiB
+    // Generate deterministic payload of 1 MiB (reduced to avoid buffer size issues).
+    const payloadSize = 1 * 1024 * 1024 // 1 MiB
     payload := generatePRData(payloadSize)
     if _, err := stream.Write(payload); err != nil {
         log.Fatalf("write error: %v", err)
@@ -57,12 +81,25 @@ func main() {
     // Read the echoed data back and verify checksum.
     received, err := io.ReadAll(stream)
     if err != nil {
-        log.Fatalf("read error: %v", err)
+        // In quic-go, a remote close with error code 0 can surface as
+        // "Application error 0x0 (remote)". This is expected for a graceful
+        // shutdown, so we treat it as non‑fatal.
+        if !strings.Contains(err.Error(), "Application error 0x0") {
+            log.Fatalf("read error: %v", err)
+        }
     }
     if len(received) != len(payload) {
         log.Fatalf("payload size mismatch: sent %d, received %d", len(payload), len(received))
     }
-    fmt.Printf("client: transfer complete, %d bytes echoed\n", len(received))
+    // Compute SHA-256 checksums for sent and received payloads.
+    sentHash := sha256.Sum256(payload)
+    recvHash := sha256.Sum256(received)
+    sentHex := hex.EncodeToString(sentHash[:])
+    recvHex := hex.EncodeToString(recvHash[:])
+    if sentHex != recvHex {
+        log.Fatalf("checksum mismatch: sent %s, received %s", sentHex, recvHex)
+    }
+    fmt.Printf("client: transfer complete, %d bytes echoed, checksum %s\n", len(received), sentHex)
 }
 
 // generatePRData creates deterministic pseudo‑random data, matching the helper

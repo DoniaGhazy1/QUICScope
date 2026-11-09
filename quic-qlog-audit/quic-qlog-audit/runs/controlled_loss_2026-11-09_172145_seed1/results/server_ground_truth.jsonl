@@ -1,0 +1,14 @@
+{"packet_number":354,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421342195}
+{"packet_number":355,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421422183}
+{"packet_number":356,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421425194}
+{"packet_number":357,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421427575}
+{"packet_number":358,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421429207}
+{"packet_number":359,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421431263}
+{"packet_number":360,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421432813}
+{"packet_number":361,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421434336}
+{"packet_number":362,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421435802}
+{"packet_number":363,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421437670}
+{"packet_number":364,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421439168}
+{"packet_number":365,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421440645}
+{"packet_number":366,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421442167}
+{"packet_number":367,"encryption_level":"1RTT","packet_number_space":"appdata","endpoint":"server","ack_eliciting":true,"path_probe":false,"trigger":"time_threshold","timestamp_ns":1794244905421443669}

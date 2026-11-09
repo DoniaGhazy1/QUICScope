@@ -1,0 +1,3 @@
+qdisc netem 800b: root refcnt 2 limit 1000 loss 10% 25%
+ Sent 5355667 bytes 1938 pkt (dropped 7, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
