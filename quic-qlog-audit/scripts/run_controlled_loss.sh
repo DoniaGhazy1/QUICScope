@@ -44,7 +44,8 @@ SERVER_PID=$!
 sleep 1
 
 # Run the client with elevated privileges for the same reason.
-sudo env "QUIC_SERVER_ADDR=$QUIC_SERVER_ADDR" "QLOGDIR=$QLOGDIR" ./client_bin -addr "$QUIC_SERVER_ADDR"
+# Capture client stdout (including transfer summary) to a file for later analysis.
+sudo env "QUIC_SERVER_ADDR=$QUIC_SERVER_ADDR" "QLOGDIR=$QLOGDIR" ./client_bin -addr "$QUIC_SERVER_ADDR" | tee client_output.txt
 
 # Wait for the client to finish (it exits after the transfer).
 wait
@@ -70,9 +71,11 @@ mkdir -p "${RUN_DIR}/qlog" "${RUN_DIR}/results"
 sudo mv "$QLOGDIR"/*.sqlog "${RUN_DIR}/qlog/" 2>/dev/null || true
 
 # Move the ground‑truth JSONL files and any other result artifacts into the run's results directory.
-sudo mv results/* "${RUN_DIR}/results/" 2>/dev/null || true
-sudo mv client_debug.log server_debug.log "${RUN_DIR}/results/" 2>/dev/null || true
-sudo mv netem_stats.txt "${RUN_DIR}/results/" 2>/dev/null || true
+ sudo mv results/* "${RUN_DIR}/results/" 2>/dev/null || true
+ sudo mv client_debug.log server_debug.log "${RUN_DIR}/results/" 2>/dev/null || true
+ sudo mv netem_stats.txt "${RUN_DIR}/results/" 2>/dev/null || true
+ # Also move the captured client output for transfer verification.
+ sudo mv client_output.txt "${RUN_DIR}/results/" 2>/dev/null || true
 
 # Record the quic-go source commit used for this run.
 pushd upstream/quic-go > /dev/null

@@ -15,12 +15,18 @@
 
 set -euo pipefail
 
+# Enable nullglob so that globs that don't match expand to empty list instead of the pattern itself.
+shopt -s nullglob
+
 if [[ $# -ne 1 ]]; then
     echo "Usage: $0 <run_directory>"
     exit 1
 fi
 
-RUN_DIR="$1"
+# Resolve the run directory to an absolute path to avoid issues with nested
+# relative paths (e.g., when the script is invoked from the repository root
+# using a path that already includes the "quic-qlog-audit" prefix).
+RUN_DIR="$(cd "$1" && pwd)"
 RESULTS_DIR="$RUN_DIR/results"
 QLOG_DIR="$RUN_DIR/qlog"
 
@@ -29,10 +35,16 @@ SERVER_GT="$RESULTS_DIR/server_ground_truth.jsonl"
 # Resolve all client and server sqlog files.
 # The qlog files are named <odcid>_client.sqlog and <odcid>_server.sqlog.
 # Use a pattern that matches the underscore before the suffix.
-CLIENT_SQLOGS=$(ls "$QLOG_DIR"/*_client.sqlog 2>/dev/null)
-SERVER_SQLOGS=$(ls "$QLOG_DIR"/*_server.sqlog 2>/dev/null)
+# Collect client and server qlog files into arrays.
+CLIENT_SQLOGS=($QLOG_DIR/*_client.sqlog)
+SERVER_SQLOGS=($QLOG_DIR/*_server.sqlog)
 
-if [[ -z "$CLIENT_SQLOGS" || -z "$SERVER_SQLOGS" ]]; then
+# Debug output to verify that the globbing works as expected.
+echo "Debug: QLOG_DIR=$QLOG_DIR" >&2
+echo "Debug: client sqlog files: ${CLIENT_SQLOGS[@]}" >&2
+echo "Debug: server sqlog files: ${SERVER_SQLOGS[@]}" >&2
+
+if (( ${#CLIENT_SQLOGS[@]} == 0 || ${#SERVER_SQLOGS[@]} == 0 )); then
     echo "Error: Could not find client or server .sqlog files in $QLOG_DIR"
     exit 1
 fi
@@ -58,13 +70,15 @@ strip_and_parse() {
 extract_losses() {
     # $1 = sqlog file, $2 = endpoint (client|server)
     # Extract loss events, ensuring required fields are present.
+    # The function now correctly outputs events when all required fields are present,
+    # and emits a warning to stderr for malformed records without discarding valid ones.
     strip_and_parse "$1" |
         jq -c "select(.name == \"recovery:packet_lost\" or .name == \"quic:packet_lost\") |
-            # Verify that essential fields exist; otherwise warn.
             if (.data.header.packet_number == null or .data.header.packet_type == null or .data.trigger == null) then
                 (\"Warning: missing identifier fields in qlog record: \" + (tostring)) | stderr
-            else empty end |
-            {endpoint: \"$2\", header: .data.header, trigger: .data.trigger}"
+            else
+                {endpoint: \"$2\", header: .data.header, trigger: .data.trigger}
+            end"
 }
 
 # Load ground‑truth loss records into associative arrays for quick lookup.
@@ -117,15 +131,15 @@ process_qlog() {
     declare -A seen
 
     # Determine the list of sqlog files for this endpoint.
-    local sqlog_files=""
+    local sqlog_files=()
     if [[ "$endpoint" == "client" ]]; then
-        sqlog_files="$CLIENT_SQLOGS"
+        sqlog_files=("${CLIENT_SQLOGS[@]}")
     else
-        sqlog_files="$SERVER_SQLOGS"
+        sqlog_files=("${SERVER_SQLOGS[@]}")
     fi
 
     # Process each sqlog file for the endpoint.
-    for sqlog_file in $sqlog_files; do
+    for sqlog_file in "${sqlog_files[@]}"; do
         while IFS= read -r ev; do
             total=$((total+1))
             pkt_num=$(echo "$ev" | jq -r '.header.packet_number')
