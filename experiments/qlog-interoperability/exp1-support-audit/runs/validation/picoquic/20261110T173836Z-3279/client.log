@@ -1,0 +1,41 @@
+Starting Picoquic (v1.1.54.0) connection to server = 127.0.0.1, port = 4446
+Testing scenario: </payload.bin>
+Max streams bidir remote before start = 0 (0)
+Starting client connection. Version = 1, I-CID: 44819b3dbc95e566
+Max streams bidir remote after start = 0 (0)
+Waiting for packets.
+Client port (AF=2): 14220.
+Negotiated ALPN: h3
+Almost ready!
+
+Connection established. Version = 1, I-CID: 44819b3dbc95e566, verified: 1
+Opening stream 0 to GET /payload.bin
+Stream 0 ended after 1048576 bytes
+All done, Closing the connection.
+Received a request to close the connection.
+The connection is closed!
+Address Discovery mode: 0 / 0 (0:0)
+Quic Bit was NOT greased by the client.
+Quic Bit was NOT greased by the server.
+ECN was received (ect0: 748, ect1: 0, ce: 0).
+ECN was acknowledged (ect0: 24, ect1: 0, ce: 0).
+Received 1048643 bytes in 0.019009 seconds, 441.324846 Mbps.
+Sent 86 bytes in 0.019009 seconds, 0.036193 Mbps.
+max_data_local: 3145728
+max_stream_data_local: 2097152
+max_data_remote: 1048576
+max_stream_data_remote: 0
+ack_delay_remote: 1000 ... 1000
+max_ack_gap_remote: 32
+ack_delay_local: 1000 ... 25000
+max_ack_gap_local: 6
+max_mtu_sent: 1252
+max_mtu_received: 1440
+System call duration max: 60
+System call duration smoothed: 0
+System call duration deviation: 0
+Received ticket from localhost (h3):
+ticket time = 1794332318382, kx = 1d, suite = 1301, 123 ticket, 32 secret.
+lifetime = 100000, age_add = 6613bda0, 0 nonce, 102 ticket, 8 extensions.
+ticket extensions: 42(ED: ffffffff),
+Client exit with code = 0

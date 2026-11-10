@@ -49,6 +49,11 @@ echo "Port:  $PORT"
     echo "payload_bytes=$(wc -c < "$FIXTURE")"
     echo "payload_sha256=$(sha256sum "$FIXTURE" | cut -d' ' -f1)"
     echo "kernel=$(uname -r)"
+    echo "rmem_default=$(sysctl -n net.core.rmem_default)"
+    echo "rmem_max=$(sysctl -n net.core.rmem_max)"
+    echo "wmem_default=$(sysctl -n net.core.wmem_default)"
+    echo "wmem_max=$(sysctl -n net.core.wmem_max)"
+
     echo "ngtcp2_commit=$(git -C "$EXP/ngtcp2" rev-parse HEAD)"
     echo "picoquic_commit=$(git -C "$EXP/picoquic" rev-parse HEAD)"
     echo "quic_go_commit=$(git -C "$HOME/QUICScope/quic-qlog-audit/upstream/quic-go" rev-parse HEAD)"
@@ -71,6 +76,7 @@ case "$STACK" in
 
     picoquic)
         "$BUILDS/picoquic/picoquicdemo" \
+            -L \
             -p "$PORT" \
             -c "$CERT" \
             -k "$KEY" \
@@ -115,6 +121,7 @@ case "$STACK" in
 
     picoquic)
         timeout 90 "$BUILDS/picoquic/picoquicdemo" \
+            -L \
             -n localhost \
             -T "$RUN/fresh_tickets.bin" \
             -q "$RUN/client_qlog" \

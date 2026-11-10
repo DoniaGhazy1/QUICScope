@@ -1,0 +1,2 @@
+listening on 127.0.0.1:4445
+2026/11/10 17:39:44 failed to sufficiently increase send buffer size (was: 208 kiB, wanted: 7168 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.

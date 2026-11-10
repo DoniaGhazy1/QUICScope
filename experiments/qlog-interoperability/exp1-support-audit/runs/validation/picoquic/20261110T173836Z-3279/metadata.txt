@@ -1,0 +1,14 @@
+stack=picoquic
+run_id=20261110T173836Z-3279
+port=4446
+date_utc=2026-11-10T17:38:36Z
+hostname=sriov-vm1
+payload_bytes=1048576
+payload_sha256=9bf9f0415bf644a419988c10cfa2e6bd089a16a207feef0f8420e66ebedf17f8
+kernel=6.8.0-147-generic
+ngtcp2_commit=e82176c8105490eeedb1ee1c805578d9ea867672
+picoquic_commit=77fa50201a2897a1aa90f9d0ff43e8d2fd39d182
+quic_go_commit=ed90516797ec8ed7314c2b163797eca58fd5a2b8
+client_process_status=0
+validation=PASS
+download_sha256=9bf9f0415bf644a419988c10cfa2e6bd089a16a207feef0f8420e66ebedf17f8
