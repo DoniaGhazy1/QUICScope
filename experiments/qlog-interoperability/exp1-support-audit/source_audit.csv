@@ -1,0 +1,10 @@
+implementation,event_name,defined_in_source,notes
+quic-go,connection_data_blocked_updated,yes,
+quic-go,stream_data_blocked_updated,yes,
+quic-go,datagram_data_blocked_updated,yes,
+ngtcp2,connection_data_blocked_updated,no,Implementation does not provide qlog
+ngtcp2,stream_data_blocked_updated,no,Implementation does not provide qlog
+ngtcp2,datagram_data_blocked_updated,no,Implementation does not provide qlog
+picoquic,connection_data_blocked_updated,no,Implementation does not provide qlog
+picoquic,stream_data_blocked_updated,no,Implementation does not provide qlog
+picoquic,datagram_data_blocked_updated,no,Implementation does not provide qlog

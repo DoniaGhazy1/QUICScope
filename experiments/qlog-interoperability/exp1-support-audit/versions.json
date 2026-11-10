@@ -1,0 +1,25 @@
+{
+  "implementations": [
+    {
+      "name": "quic-go",
+      "source_path": "quic-qlog-audit/upstream/quic-go",
+      "repo_url": "https://github.com/quic-go/quic-go",
+      "commit": "ed90516797ec8ed7314c2b163797eca58fd5a2b8",
+      "build_instructions": "go build ./..."
+    },
+    {
+      "name": "ngtcp2",
+      "source_path": "experiments/qlog-interoperability/exp1-support-audit/ngtcp2",
+      "repo_url": "https://github.com/ngtcp2/ngtcp2",
+      "commit": "e82176c8105490eeedb1ee1c805578d9ea867672",
+      "build_instructions": "autoreconf -i && ./configure && make -j$(nproc)"
+    },
+    {
+      "name": "picoquic",
+      "source_path": "experiments/qlog-interoperability/exp1-support-audit/picoquic",
+      "repo_url": "https://github.com/private-octopus/picoquic",
+      "commit": "77fa50201a2897a1aa90f9d0ff43e8d2fd39d182",
+      "build_instructions": "make -j$(nproc)" 
+    }
+  ]
+}

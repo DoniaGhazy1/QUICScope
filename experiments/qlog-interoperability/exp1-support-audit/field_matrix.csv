@@ -1,0 +1,16 @@
+implementation,event_name,field,available
+quic-go,connection_data_blocked_updated,old,yes
+quic-go,connection_data_blocked_updated,new,yes
+quic-go,connection_data_blocked_updated,reason,yes
+quic-go,stream_data_blocked_updated,old,yes
+quic-go,stream_data_blocked_updated,new,yes
+quic-go,stream_data_blocked_updated,reason,yes
+quic-go,datagram_data_blocked_updated,old,yes
+quic-go,datagram_data_blocked_updated,new,yes
+quic-go,datagram_data_blocked_updated,reason,yes
+ngtcp2,connection_data_blocked_updated,,,no
+ngtcp2,stream_data_blocked_updated,,,no
+ngtcp2,datagram_data_blocked_updated,,,no
+picoquic,connection_data_blocked_updated,,,no
+picoquic,stream_data_blocked_updated,,,no
+picoquic,datagram_data_blocked_updated,,,no
