@@ -28,20 +28,27 @@ cd "$BASE_DIR/quic-qlog-audit/upstream/quic-go"
 go build ./... >/dev/null 2>&1 || { log "quic-go build failed"; exit 1; }
 
 # Start server in background.
-# The upstream quic‑go example provides a server under the `example/echo` package.
-# Running the package starts the echo server.
+# Use the repository's dedicated QUIC server implementation which enables qlog tracing.
 mkdir -p "$LOG_DIR/quic-go"
-go run ./example/echo >"$LOG_DIR/quic-go/server.log" 2>&1 &
-go run ./example/echo_server.go >"$LOG_DIR/quic-go/server.log" 2>&1 &
+# Build the server binary
+go build -o "$LOG_DIR/quic-go/quic_server" "$BASE_DIR/server/main.go" >/dev/null 2>&1 || { log "quic-go server build failed"; exit 1; }
+# Run the server; it will write server.sqlog in its working directory (the LOG_DIR)
+cd "$LOG_DIR/quic-go"
+./quic_server >server.log 2>&1 &
 SERVER_PID=$!
+cd "$BASE_DIR"
 # Give server a moment to start
 sleep 2
-# Run client, which writes client.sqlog in the working directory
+# Run client, which writes client.sqlog in the current working directory (the repository root)
 go run "$BASE_DIR/client/main.go" -addr 127.0.0.1:4242 >"$LOG_DIR/quic-go/client.log" 2>&1 || true
+# Stop server
 kill $SERVER_PID || true
-# Move generated qlog files
-if [[ -f client.sqlog ]]; then
+# Move generated qlog files into the log directory
+if [[ -f "client.sqlog" ]]; then
     mv client.sqlog "$LOG_DIR/quic-go/"
+fi
+if [[ -f "server.sqlog" ]]; then
+    mv server.sqlog "$LOG_DIR/quic-go/"
 fi
 
 # ---------------------------------------------------------------------------

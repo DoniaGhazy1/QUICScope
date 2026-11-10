@@ -67,8 +67,8 @@ func main() {
     }
     defer stream.Close()
 
-    // Generate deterministic payload of 1 MiB (reduced to avoid buffer size issues).
-    const payloadSize = 1 * 1024 * 1024 // 1 MiB
+    // Generate deterministic payload of 256 KiB to ensure quick transfer and avoid timeout.
+    const payloadSize = 256 * 1024 // 256 KiB
     payload := generatePRData(payloadSize)
     if _, err := stream.Write(payload); err != nil {
         log.Fatalf("write error: %v", err)

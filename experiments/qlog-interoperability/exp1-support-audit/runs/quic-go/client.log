@@ -1,3 +1,2 @@
-2026/11/10 14:47:53 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 7168 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
-2026/11/10 14:47:58 dial error: timeout: no recent network activity
-exit status 1
+2026/11/10 15:16:20 failed to sufficiently increase receive buffer size (was: 208 kiB, wanted: 7168 kiB, got: 416 kiB). See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
+client: transfer complete, 262144 bytes echoed, checksum 236846a3aee328539252c3fc6fb13ac54fa100f26d08186044fa89fc0bf09518
